@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{% block title %} {% endblock title %}</title>
+    </head>
+    <body>
+        <div>
+            {% include 'header.html' %}
+        </div>
+        <div>
+            {% block content %}
+            {% endblock content %}
+        </div>
+    </body>
+</html>
