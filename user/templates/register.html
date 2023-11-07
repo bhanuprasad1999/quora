@@ -1,0 +1,12 @@
+{% extends 'index.html' %}
+
+
+{% block content %}
+<div class="card border-primary col-6 offset-4 p-3" style="width: 30rem;">
+    <form  method="post">
+        {% csrf_token %}
+        {{ form.as_p | crispy }}
+        <button>Sign Up</button>
+    </form>
+</div>
+{% endblock content %}

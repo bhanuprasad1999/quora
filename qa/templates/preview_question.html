@@ -1,0 +1,14 @@
+{% extends 'index.html' %}
+{% block content %}
+<div class="card col-8 offset-1 p-3 mb-5" style="width: 80%; height: 100%;">
+    <h1>{{question.question_title}}</h1>
+    <ul>
+        {% for ans in answers %}
+            
+            <li>{{ans.user_id}} - {{ans.answer}}</li>
+        {% endfor %}
+    </ul>
+    
+</div>
+{% include 'submit_answers.html' with question_id=question.id form=form %}
+{% endblock content %}

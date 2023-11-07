@@ -1,0 +1,15 @@
+{% extends 'index.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<div class="card border-primary col-6 offset-3 p-3" style="width: 50%;">
+    <h2 class="mb-3">Add Question :</h2>
+
+    <form method="post">
+        {% csrf_token %}
+        {{question_form | crispy}}
+        <button class="btn btn-outline-primary">Submit</button>
+    </form>
+</div>
+{% endblock %}

@@ -1,21 +1,21 @@
-from forms import ModelForms
+from django.forms import ModelForm
 from qa.models import Answers, Questions, Ratings
 
 
 
-class QuestionForm(ModelForms):
+class QuestionForm(ModelForm):
     class Meta:
         model = Questions
         fields = ['question_title', 'question_description']
 
 
-class AnswerForm(ModelForms):
+class AnswerForm(ModelForm):
     class Meta:
         model = Answers
         fields = ['answer']
 
 
-class RatingForm(ModelForms):
+class RatingForm(ModelForm):
     class Meta:
         model = Ratings
         fields = ['vote']

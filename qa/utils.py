@@ -3,6 +3,9 @@
 
 
 
+from qa.models import Answers, Questions
+
+
 def get_ratings_count(content_type, object_id):
     """
     args: content_type(like, question, answer etc), object_id(question_id,)
@@ -28,4 +31,10 @@ def get_view_of_question_and_answers(question_id):
         ]
     }
     """
-    pass
+    try:
+        question = Questions.objects.get(id = question_id)
+        answers = Answers.objects.filter(question__id = question_id)
+        answers
+        return question, answers
+    except:
+        return [], []
