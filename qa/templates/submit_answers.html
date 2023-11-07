@@ -1,7 +1,7 @@
 {% load crispy_forms_tags %}
 <div>
     <div class="card border-primary col-6 offset-2 p-3" style="width: 60%;">
-        <h1>Submit your answers: {{question_id}}</h1>
+        <h1>Submit your answers: </h1>
         <form method="post" action="{% url 'submit_answer_for_question' question_id=question_id %}">
             {% csrf_token %}
             {{form | crispy}}

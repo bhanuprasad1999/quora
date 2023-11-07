@@ -13,9 +13,3 @@ class AnswerForm(ModelForm):
     class Meta:
         model = Answers
         fields = ['answer']
-
-
-class RatingForm(ModelForm):
-    class Meta:
-        model = Ratings
-        fields = ['vote']

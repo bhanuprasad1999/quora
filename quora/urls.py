@@ -22,5 +22,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('qa/', include('qa.urls')),
     path('user/', include('user.urls')),
+    
     path('page_not_found/', TemplateView.as_view(template_name='404page.html'))
 ]

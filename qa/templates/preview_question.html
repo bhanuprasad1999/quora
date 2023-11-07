@@ -1,13 +1,23 @@
 {% extends 'index.html' %}
-{% block content %}
+{% block title %}Question View{% endblock %}
+{% block content %} 
 <div class="card col-8 offset-1 p-3 mb-5" style="width: 80%; height: 100%;">
-    <h1>{{question.question_title}}</h1>
-    <ul>
-        {% for ans in answers %}
-            
-            <li>{{ans.user_id}} - {{ans.answer}}</li>
-        {% endfor %}
-    </ul>
+    <h1>{{question.question_title}} </h1>
+    <p>
+        <span class="badge bg-primary">{{question.user_id}}</span>
+        {% if request.user == question.user_id %}
+        <a href="{% url 'update_question' question.id %}" style="text-decoration: none;">Edit</a>
+        {% endif %}
+        <a href="{% url 'vote_for_question' question.id %}" style="text-decoration: none;">vote</a> {{question.ratings}}</p>
+    {% for ans in answers %}
+    <div class="card col-7 mt-3 mb-2 p-3 offset-1">
+        <p> {{ans.answer}}</p>
+        <p>
+            <span class="badge bg-primary">{{ans.user_id}}</span>
+            <a href="{% url 'vote_for_answer' ans.id %}" style="text-decoration: none;">vote</a> {{ans.ratings}} </p>
+        
+    </div>
+    {% endfor %}
     
 </div>
 {% include 'submit_answers.html' with question_id=question.id form=form %}

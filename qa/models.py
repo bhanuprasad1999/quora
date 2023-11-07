@@ -27,6 +27,7 @@ class Answers(models.Model):
 
 class Ratings(models.Model):
     id = models.BigAutoField(unique=True, primary_key=True, null=False, blank=False)
+    user_id = models.ForeignKey(User, on_delete=models.DO_NOTHING, null=False)
     vote = models.BooleanField(default=0)
     content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE, limit_choices_to={'model__in':['questions', 'answers']})
     object_id = models.PositiveIntegerField()
