@@ -1,0 +1,14 @@
+{% extends 'index.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="card border-primary col-6 offset-4 p-3" style="width: 30rem;">
+    <form  method="post">
+        <h1>Login</h1>
+        {% csrf_token %}
+        {{ form | crispy }}
+        <button class="btn btn-outline-primary">Login</button>
+    </form>
+    <a href="{% url 'register-account' %}">Sign Up</a>
+</div>
+{% endblock %}

@@ -34,7 +34,6 @@ def get_view_of_question_and_answers(question_id):
     try:
         question = Questions.objects.get(id = question_id)
         answers = Answers.objects.filter(question__id = question_id)
-        answers
         return question, answers
     except:
         return [], []

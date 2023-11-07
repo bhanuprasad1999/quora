@@ -1,5 +1,14 @@
 {% extends 'index.html' %}
 
 {% block content %}
-<h1> List of Questions: </h1>
+<div class="card col-8 offset-1 p-3 mb-5" style="width: 80%; height: 100%;">
+    <h1> List of Questions: </h1>
+    {% for question in questions %}
+        <div class="card col-7 mb-5 offset-2">
+            <a href="{% url 'view_question' question.id %}" class="p-3" style="text-decoration: none; margin:0;">
+                {{question.question_title}}
+            </a>
+        </div>
+    {% endfor %}
+</div>
 {% endblock content %}

@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth.forms import UserCreationForm  
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 
 from user.forms import LoginForm
 # Create your views here.
@@ -33,7 +33,9 @@ def loggin_account(request):
         username = form.cleaned_data['username']
         password = form.cleaned_data['password']
         user = authenticate(username=username, password=password)
-        if user:
+        print(user)
+        if user is not None:
+            login(request, user)
             return redirect('/qa/add_question/')
         else:
             form = LoginForm()
@@ -43,3 +45,7 @@ def loggin_account(request):
         'form':form
     }
     return render(request, 'login.html', context=context)
+
+def logout_account(request):
+    logout(request)
+    return redirect('/qa/question_list/')

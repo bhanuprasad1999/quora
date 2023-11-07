@@ -7,6 +7,8 @@ from qa.utils import get_view_of_question_and_answers
 
 
 def add_question(request):
+    if not request.user.is_authenticated:
+        return redirect('/user/login/')
     form = QuestionForm(request.POST)
     logged_in = request.user
     print(logged_in)
@@ -23,14 +25,13 @@ def add_question(request):
 def update_question():
     pass
 
-def list_questions():
-    pass
+def list_questions(request):
+    questions = Questions.objects.all()
+    return render(request, 'questions_list.html', {'questions':questions})
 
 
 def submit_answer_for_question(request, question_id):
     form = AnswerForm(request.POST)
-    logged_in = request.user
-    print(logged_in)
     if form.is_valid():
         form.instance.user_id = request.user
         form.instance.question = Questions.objects.get(id=question_id)

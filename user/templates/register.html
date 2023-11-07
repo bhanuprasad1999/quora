@@ -4,10 +4,12 @@
 
 {% block content %}
 <div class="card border-primary col-6 offset-4 p-3" style="width: 30rem;">
+    <h1>Sign Up</h1>
     <form  method="post">
         {% csrf_token %}
         {{ form | crispy }}
-        <button>Sign Up</button>
+        <button class="btn btn-outline-primary">Sign Up</button>
     </form>
+    <a href="{% url 'login' %}">Login</a>
 </div>
 {% endblock content %}
